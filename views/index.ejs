@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+</head>
+
+<body>
+    <div class="container1">
+        <h1 class="text-lg font-bold text-black">Food Blog</h1>
+
+        <br>
+
+        <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" onclick="window.location.href='/new';">
+            <a id="newPostBtn" href="/new">New Post</a>
+        </button>
+
+        <ul id="postsList">
+            <% posts.forEach(post=> { %>
+                <div class="container">
+                    <li>
+
+                        <!-- Image -->
+                        <div class="flex-none w-48 relative">
+                            <img src="#" alt="food Image" class="absolute inset-0 w-full h-full object-cover"
+                                loading="lazy" />
+                        </div>
+
+                        <form class="flex-auto p-6">
+                            <div class="flex flex-wrap">
+
+                                <!-- Food name -->
+                                <h1 class="flex-auto text-lg font-semibold text-slate-900">
+                                    <%=post.foodName%>
+                                </h1>
+
+                                <!-- Author -->
+                                <div class="text-sm font-semi-bold text-slate-600">
+                                    By: <%=post.author%>
+                                </div>
+
+                                <div class="space-x-2 flex text-m">
+                                    <%=post.description%>
+                                </div>
+                                
+                            </div>
+
+                            <!-- Date published -->
+                            <div class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
+                                
+                                <div class="w-full flex-none text-sm font-medium text-slate-700 mt-2">
+                                    <%=post.date %>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-4 mb-6 text-sm font-medium">
+                                <div class="flex-auto flex space-x-4">
+                                    <button class="h-10 px-6 font-semibold rounded-md bg-black text-white"
+                                        type="submit">
+                                        Read more
+                                    </button>
+                                    <button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900"
+                                        type="button">
+                                        Share
+                                    </button>
+                                </div>
+
+                                <!-- Like button work in progress-->
+                                <!-- <button
+                                    class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
+                                    type="button" aria-label="Like" onclick="toggleFill()">
+                                    <svg id="heartIcon" width="20" height="20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                                    </svg>
+                                </button> -->
+
+                            </div>
+                        </form>
+                        <button class="edit text-sm text-slate-700  h-10 px-6 font-semibold rounded-md bg-black text-white" onclick="window.location.href='/edit/<%= post.id %>';">
+                            Edit
+                        </button>
+                        
+                        <a class="delete text-sm text-slate-700" href="/api/posts/delete/<%= post.id %>">Delete</a>
+                    </li>
+                    <% }); %>
+                </div>
+        </ul>
+    </div>
+
+    <!-- <script>
+        function toggleFill() {
+            var heartIcon = document.getElementById('heartIcon');
+            if (heartIcon.getAttribute('fill') === 'red') {
+                heartIcon.setAttribute('fill', 'currentColor');
+            } else {
+                heartIcon.setAttribute('fill', 'red');
+            }
+        }
+    </script> -->
+</body>
+
+</html>
