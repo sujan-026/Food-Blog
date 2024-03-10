@@ -73,8 +73,9 @@ app.post("/posts", (req, res) => {
   const newId = lastId += 1;
   const post = {
     id: newId,
-    title: req.body.title,
-    content: req.body.content,
+    foodName: req.body.foodName,
+    foodType: req.body.foodType,
+    description: req.body.description,
     author: req.body.author,
     date: new Date(),
   };
@@ -88,8 +89,9 @@ app.patch("/posts/:id", (req, res) => {
   const post = posts.find((p) => p.id === parseInt(req.params.id));
   if (!post) return res.status(404).json({ message: "Post not found" });
 
-  if (req.body.title) post.title = req.body.title;
-  if (req.body.content) post.content = req.body.content;
+  if (req.body.foodName) post.foodName = req.body.foodName;
+  if (req.body.foodType) post.foodType = req.body.foodType;
+  if (req.body.description) post.description = req.body.description;
   if (req.body.author) post.author = req.body.author;
 
   res.json(post);

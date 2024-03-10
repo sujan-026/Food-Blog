@@ -16,8 +16,9 @@
 
     <% if (locals.post) { %>
       <form id="editForm" method="post" action="/api/posts/<%=post.id%>">
-        <input type="text" name="title" value="<%=post.title %>">
-        <textarea name="content" rows="10"><%=post.content %></textarea>
+        <input type="text" name="foodName" value="<%=post.foodName %>">
+        <input type="text" name="foodType" value="<%=post.foodType %>">
+        <textarea name="description" rows="10"><%=post.description %></textarea>
         <input type="text" name="author" value="<%=post.author %>">
         <button class="full-width" type="submit">
           <%= submit %>
@@ -25,8 +26,9 @@
       </form>
       <% } else {%>
         <form id="newPostForm" method="post" action="/api/posts">
-          <input type="text" name="title" placeholder="Title" required>
-          <textarea name="content" placeholder="Content" required rows="10"></textarea>
+          <input type="text" name="foodName" placeholder="Title" required>
+          <input type="text" name="foodType" placeholder="Type" required>
+          <textarea name="description" placeholder="Description" required rows="10"></textarea>
           <input type="text" name="author" placeholder="Author" required>
           <button class="full-width" type="submit">
             <%= submit %>

@@ -16,12 +16,13 @@
 
         <br>
 
-        <div class="container"></div>
+        <div class="container">
         <% posts.forEach(post=> { %>
 
             <!-- Image -->
             <div class="flex-none w-48 relative">
                 <img src="#" alt="food Image" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                <h2></h2>
             </div>
 
             <form class="flex-auto p-6">
@@ -87,8 +88,8 @@
                 <button class="h-10 px-6 font-semibold rounded-md bg-green-600 text-white"
                     onclick="window.location.href='/new';">
                     <a id="newPostBtn" href="/new">New Post</a>
-                </button>
-
+                </button> 
+        </div>
     </div>
 
     <!-- <script>
