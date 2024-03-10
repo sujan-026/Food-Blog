@@ -11,67 +11,57 @@
 </head>
 
 <body>
-    <div class="container1">
-        <h1 class="text-lg font-bold text-black">Food Blog</h1>
+    <div class="container1 ">
+        <h1 class="text-3xl font-bold text-black">The Food Blog</h1>
 
         <br>
 
-        <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" onclick="window.location.href='/new';">
-            <a id="newPostBtn" href="/new">New Post</a>
-        </button>
+        <div class="container"></div>
+        <% posts.forEach(post=> { %>
 
-        <ul id="postsList">
-            <% posts.forEach(post=> { %>
-                <div class="container">
-                    <li>
+            <!-- Image -->
+            <div class="flex-none w-48 relative">
+                <img src="#" alt="food Image" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            </div>
 
-                        <!-- Image -->
-                        <div class="flex-none w-48 relative">
-                            <img src="#" alt="food Image" class="absolute inset-0 w-full h-full object-cover"
-                                loading="lazy" />
-                        </div>
+            <form class="flex-auto p-6">
+                <div>
+                    <!-- Food name -->
+                    <h1 class="text-lg font-semibold text-slate-900">
+                        <%=post.foodName%>
+                    </h1>
 
-                        <form class="flex-auto p-6">
-                            <div class="flex flex-wrap">
+                    <div class="space-x-2 flex text-m">
+                        <%=post.description%>
+                    </div>
 
-                                <!-- Food name -->
-                                <h1 class="flex-auto text-lg font-semibold text-slate-900">
-                                    <%=post.foodName%>
-                                </h1>
+                    <!-- Author -->
+                    <div class="text-sm font-semi-bold text-slate-600 my-5">
+                        By: <%=post.author%>
+                    </div>
+                </div>
 
-                                <!-- Author -->
-                                <div class="text-sm font-semi-bold text-slate-600">
-                                    By: <%=post.author%>
-                                </div>
+                <!-- Date published -->
+                <div class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
 
-                                <div class="space-x-2 flex text-m">
-                                    <%=post.description%>
-                                </div>
-                                
-                            </div>
+                    <div class="w-full flex-none text-sm font-medium text-slate-700 mt-2">
+                        <%=post.date %>
+                    </div>
+                </div>
 
-                            <!-- Date published -->
-                            <div class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
-                                
-                                <div class="w-full flex-none text-sm font-medium text-slate-700 mt-2">
-                                    <%=post.date %>
-                                </div>
-                            </div>
+                <!-- <div class="flex space-x-4 mb-6 text-sm font-medium">
+                    <div class="flex-auto flex space-x-4">
+                        <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit">
+                            Read more
+                        </button>
+                        <button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900"
+                            type="button">
+                            Share
+                        </button>
+                    </div> -->
 
-                            <div class="flex space-x-4 mb-6 text-sm font-medium">
-                                <div class="flex-auto flex space-x-4">
-                                    <button class="h-10 px-6 font-semibold rounded-md bg-black text-white"
-                                        type="submit">
-                                        Read more
-                                    </button>
-                                    <button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900"
-                                        type="button">
-                                        Share
-                                    </button>
-                                </div>
-
-                                <!-- Like button work in progress-->
-                                <!-- <button
+                <!-- Like button work in progress-->
+                <!-- <button
                                     class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
                                     type="button" aria-label="Like" onclick="toggleFill()">
                                     <svg id="heartIcon" width="20" height="20" fill="currentColor" aria-hidden="true">
@@ -80,17 +70,25 @@
                                     </svg>
                                 </button> -->
 
-                            </div>
-                        </form>
-                        <button class="edit text-sm text-slate-700  h-10 px-6 font-semibold rounded-md bg-black text-white" onclick="window.location.href='/edit/<%= post.id %>';">
-                            Edit
-                        </button>
-                        
-                        <a class="delete text-sm text-slate-700" href="/api/posts/delete/<%= post.id %>">Delete</a>
-                    </li>
-                    <% }); %>
-                </div>
-        </ul>
+                <!-- </div> -->
+
+                <button
+                    class="bg-amber-400 hover:bg-gray-100 text-black font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                    <a class="edit" href="/edit/<%= post.id %>">Edit</a>
+                </button>
+                <button
+                    class="bg-red-600 hover:bg-gray-100 text-black font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                    <a class="delete" href="/api/posts/delete/<%= post.id %>">Delete</a>
+                </button>
+            </form>
+
+            <% }); %>
+
+                <button class="h-10 px-6 font-semibold rounded-md bg-green-600 text-white"
+                    onclick="window.location.href='/new';">
+                    <a id="newPostBtn" href="/new">New Post</a>
+                </button>
+
     </div>
 
     <!-- <script>
